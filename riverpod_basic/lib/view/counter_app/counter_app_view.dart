@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_basic/view/slider_provider.dart';
 
 final counter = StateProvider<int>((ref) {
   return 0;
@@ -21,6 +22,7 @@ class _CounterAppViewState extends ConsumerState<CounterAppView> {
   Widget build(BuildContext context) {
     final count = ref.watch(counter);
     final switchTest = ref.watch(switchProvider);
+    print(print);
     return Scaffold(
       appBar: AppBar(title: Text("Counter APP")),
       body: Column(
@@ -51,6 +53,59 @@ class _CounterAppViewState extends ConsumerState<CounterAppView> {
             onChanged: (value) {
               print("object");
               ref.read(switchProvider.notifier).state = value;
+            },
+          ),
+
+          /* Slider(
+            value: slider,
+            onChanged: (value) {
+              ref.read(sliderProvider.notifier).state = value;
+            },
+          ),*/
+          /*Consumer(
+            builder: (context, ref, child) {
+              final slider = ref.watch(sliderProvider);
+              return Slider(
+                value: slider,
+                onChanged: (value) {
+                  ref.read(sliderProvider.notifier).state = value;
+                },
+              );
+            },
+          ),*/
+          Consumer(
+            builder: (context, ref, child) {
+              final slider = ref.watch(sliderProvider);
+              return Column(
+                children: [
+                  Slider(
+                    value: slider.slider,
+                    min: 0,
+                    max: 255,
+                    onChanged: (value) {
+                      ref.read(sliderProvider.notifier).state = slider.copyWith(
+                        slider: value,
+                      );
+                    },
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    color: Colors.amber.withAlpha(slider.slider.toInt()),
+                  ),
+                  Text(slider.toString()),
+                  IconButton(
+                    onPressed: () {
+                      ref.read(sliderProvider.notifier).state = slider.copyWith(
+                        showPassword: !slider.showPassword,
+                      );
+                    },
+                    icon: slider.showPassword
+                        ? Icon(Icons.visibility)
+                        : Icon(Icons.visibility_off),
+                  ),
+                ],
+              );
             },
           ),
         ],
