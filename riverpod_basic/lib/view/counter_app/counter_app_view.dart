@@ -43,7 +43,13 @@ class _CounterAppViewState extends ConsumerState<CounterAppView> {
                         ref.read(searchProvider.notifier).search(value);
                       },
                     ),
-                    Text(ref.watch(searchProvider)),
+                    Text(search.search),
+                    Switch(
+                      value: search.isChange,
+                      onChanged: (value) {
+                        ref.read(searchProvider.notifier).onChanged(value);
+                      },
+                    ),
                   ],
                 );
               },
