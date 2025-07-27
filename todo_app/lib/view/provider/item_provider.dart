@@ -1,3 +1,4 @@
+/*
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/view/model/item.dart';
 
@@ -9,7 +10,7 @@ class ItemNotifier extends StateNotifier<List<Item>> {
   ItemNotifier() : super([]);
 
   void addItem(String name) {
-    final item = Item(id: DateTime.now().toString(), name: name);
+    final item = Item(id: DateTime.now().toString(), name: name, false);
     state.add(item);
     state = state.toList();
   }
@@ -25,3 +26,4 @@ class ItemNotifier extends StateNotifier<List<Item>> {
     state = state.toList();
   }
 }
+*/
