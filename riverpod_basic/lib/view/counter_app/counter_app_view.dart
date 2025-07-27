@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_basic/view/search_provider.dart';
 import 'package:riverpod_basic/view/slider_provider.dart';
 
 final counter = StateProvider<int>((ref) {
@@ -25,90 +26,107 @@ class _CounterAppViewState extends ConsumerState<CounterAppView> {
     print(print);
     return Scaffold(
       appBar: AppBar(title: Text("Counter APP")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(count.toString(), style: TextStyle(fontSize: 20)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  ref.read(counter.notifier).state++;
-                },
-                child: Text("Increment"),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  ref.read(counter.notifier).state--;
-                },
-                child: Text("Decrement"),
-              ),
-            ],
-          ),
-          Switch(
-            value: switchTest,
-            onChanged: (value) {
-              print("object");
-              ref.read(switchProvider.notifier).state = value;
-            },
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Consumer(
+              builder: (context, ref, child) {
+                final search = ref.watch(searchProvider);
+                return Column(
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(border: OutlineInputBorder()),
+                      onChanged: (value) {
+                        ref.read(searchProvider.notifier).search(value);
+                      },
+                    ),
+                    Text(ref.watch(searchProvider)),
+                  ],
+                );
+              },
+            ),
+            Text(count.toString(), style: TextStyle(fontSize: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    ref.read(counter.notifier).state++;
+                  },
+                  child: Text("Increment"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    ref.read(counter.notifier).state--;
+                  },
+                  child: Text("Decrement"),
+                ),
+              ],
+            ),
+            Switch(
+              value: switchTest,
+              onChanged: (value) {
+                print("object");
+                ref.read(switchProvider.notifier).state = value;
+              },
+            ),
 
-          /* Slider(
-            value: slider,
-            onChanged: (value) {
-              ref.read(sliderProvider.notifier).state = value;
-            },
-          ),*/
-          /*Consumer(
-            builder: (context, ref, child) {
-              final slider = ref.watch(sliderProvider);
-              return Slider(
-                value: slider,
-                onChanged: (value) {
-                  ref.read(sliderProvider.notifier).state = value;
-                },
-              );
-            },
-          ),*/
-          Consumer(
-            builder: (context, ref, child) {
-              final slider = ref.watch(sliderProvider);
-              return Column(
-                children: [
-                  Slider(
-                    value: slider.slider,
-                    min: 0,
-                    max: 255,
-                    onChanged: (value) {
-                      ref.read(sliderProvider.notifier).state = slider.copyWith(
-                        slider: value,
-                      );
-                    },
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    color: Colors.amber.withAlpha(slider.slider.toInt()),
-                  ),
-                  Text(slider.toString()),
-                  IconButton(
-                    onPressed: () {
-                      ref.read(sliderProvider.notifier).state = slider.copyWith(
-                        showPassword: !slider.showPassword,
-                      );
-                    },
-                    icon: slider.showPassword
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.visibility_off),
-                  ),
-                ],
-              );
-            },
-          ),
-        ],
+            /* Slider(
+              value: slider,
+              onChanged: (value) {
+                ref.read(sliderProvider.notifier).state = value;
+              },
+            ),*/
+            /*Consumer(
+              builder: (context, ref, child) {
+                final slider = ref.watch(sliderProvider);
+                return Slider(
+                  value: slider,
+                  onChanged: (value) {
+                    ref.read(sliderProvider.notifier).state = value;
+                  },
+                );
+              },
+            ),*/
+            Consumer(
+              builder: (context, ref, child) {
+                final slider = ref.watch(sliderProvider);
+                return Column(
+                  children: [
+                    Slider(
+                      value: slider.slider,
+                      min: 0,
+                      max: 255,
+                      onChanged: (value) {
+                        ref.read(sliderProvider.notifier).state = slider
+                            .copyWith(slider: value);
+                      },
+                    ),
+                    Container(
+                      height: 100,
+                      width: 100,
+                      color: Colors.amber.withAlpha(slider.slider.toInt()),
+                    ),
+                    Text(slider.toString()),
+                    IconButton(
+                      onPressed: () {
+                        ref.read(sliderProvider.notifier).state = slider
+                            .copyWith(showPassword: !slider.showPassword);
+                      },
+                      icon: slider.showPassword
+                          ? Icon(Icons.visibility)
+                          : Icon(Icons.visibility_off),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
