@@ -1,4 +1,3 @@
-/*
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo_app/view/model/item.dart';
 
@@ -26,4 +25,3 @@ class ItemNotifier extends StateNotifier<List<Item>> {
     state = state.toList();
   }
 }
-*/
