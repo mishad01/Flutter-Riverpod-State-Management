@@ -1,5 +1,4 @@
-import 'package:crud_app_using_riverpod_go_router/src/core/base/result.dart';
-
+import '../../core/base/result.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
 import '../repositories/authentication_repository.dart';
@@ -25,7 +24,8 @@ final class LoginUseCase {
     bool? shouldRemember,
   }) async {
     final request = LoginRequestEntity(
-      username: email,
+      //username: email,
+      email: email,
       password: password,
       shouldRemeber: shouldRemember,
     );

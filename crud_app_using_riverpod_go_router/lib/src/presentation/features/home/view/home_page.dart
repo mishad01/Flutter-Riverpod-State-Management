@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:crud_app_using_riverpod_go_router/src/presentation/core/router/routes.dart';
-import 'package:crud_app_using_riverpod_go_router/src/presentation/core/widgets/loading_indicator.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/application_state/logout_provider/logout_provider.dart';
+import '../../../core/router/routes.dart';
+import '../../../core/widgets/loading_indicator.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});

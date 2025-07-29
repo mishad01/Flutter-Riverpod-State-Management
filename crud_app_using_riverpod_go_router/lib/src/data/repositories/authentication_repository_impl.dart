@@ -1,11 +1,10 @@
-import 'package:crud_app_using_riverpod_go_router/src/core/base/failure.dart';
-import 'package:crud_app_using_riverpod_go_router/src/core/base/result.dart';
-import 'package:crud_app_using_riverpod_go_router/src/data/services/cache/cache_service.dart';
-
+import '../../core/base/failure.dart';
+import '../../core/base/result.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/repositories/authentication_repository.dart';
 import '../models/login_model.dart';
+import '../services/cache/cache_service.dart';
 import '../services/network/rest_client.dart';
 
 final class AuthenticationRepositoryImpl extends AuthenticationRepository {

@@ -1,8 +1,7 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
 import '../../../features/authentication/login/riverpod/login_state.dart';
-
-export 'package:crud_app_using_riverpod_go_router/src/presentation/core/base/status.dart';
+import '../../base/status.dart';
 
 part 'logout_state.mapper.dart';
 

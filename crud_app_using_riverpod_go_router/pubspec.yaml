@@ -33,27 +33,43 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
-  flutter_dotenv: ^5.2.1
+  cupertino_icons: ^1.0.6
   # State management
-  flutter_riverpod: ^2.5.1
+  flutter_riverpod: ^2.6.1
   # Navigation
   go_router: ^14.2.8
   # Cache & Database
-  shared_preferences: ^2.3.1
+  hive_ce: ^2.10.1
+  hive_ce_flutter: ^2.2.0
   # Generator and Annotations
   riverpod_annotation: ^2.3.5
-  freezed_annotation: ^3.0.0
+  # Freeze for immutable data classes
+  freezed_annotation: ^3.1.0
   # Media
   flutter_svg: ^2.0.10+1
   # Logging
   logger: ^2.4.0
   pretty_dio_logger: ^1.4.0
   # Serialization & Deserialization
-  dart_mappable:
+  dart_mappable: ^4.5.0
   # Networking
   retrofit: ^4.4.0
   dio: ^5.8.0+1
+  # WebView
+  webview_flutter: ^4.13.0
+  # Utility
+  shimmer: ^3.0.0
+  image_picker: ^1.1.2
+  mime: ^2.0.0
+  cached_network_image: ^3.4.1
+  url_launcher: ^6.3.1
+  intl: ^0.20.2
+  # Env
+  flutter_dotenv: ^5.2.1
+  # Map
+  mapbox_maps_flutter: ^2.7.0
+  package_info_plus: ^8.3.0
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -75,10 +91,13 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - .env
 flutter_gen:
   output: lib/src/presentation/core/gen
   line_length: 80

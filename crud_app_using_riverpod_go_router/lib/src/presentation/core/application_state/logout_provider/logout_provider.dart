@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/di/dependency_injection.dart';
+import '../../base/status.dart';
 import 'logout_state.dart';
 
 part 'logout_provider.g.dart';

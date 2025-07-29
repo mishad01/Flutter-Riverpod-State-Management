@@ -1,7 +1,6 @@
-import 'package:crud_app_using_riverpod_go_router/src/core/base/failure.dart';
-import 'package:crud_app_using_riverpod_go_router/src/core/base/result.dart';
-
+import '../../core/base/failure.dart';
 import '../../core/base/repository.dart';
+import '../../core/base/result.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
 

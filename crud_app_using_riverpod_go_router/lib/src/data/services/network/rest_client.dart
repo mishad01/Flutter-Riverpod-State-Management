@@ -6,13 +6,10 @@ import 'endpoints.dart';
 
 part 'rest_client.g.dart';
 
-@RestApi(baseUrl: Endpoints.base)
+@RestApi(baseUrl: Endpoints.base) //its retrofit
 abstract class RestClient {
-  factory RestClient(
-    Dio dio, {
-    String? baseUrl,
-    ParseErrorLogger errorLogger,
-  }) = _RestClient;
+  factory RestClient(Dio dio, {String? baseUrl, ParseErrorLogger errorLogger}) =
+      _RestClient;
 
   @POST(Endpoints.login)
   Future<HttpResponse> login(@Body() LoginRequestModel request);

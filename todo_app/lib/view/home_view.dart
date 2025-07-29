@@ -14,6 +14,7 @@ class HomeView extends ConsumerStatefulWidget {
 class _HomeViewState extends ConsumerState<HomeView> {
   @override
   void initState() {
+    // getIt.isReady<AppModel>().then((value) => getIt<AppModel>().addListener(Update));
     super.initState();
     Future.microtask(() {
       ref.read(favouriteProvider.notifier).addItem();

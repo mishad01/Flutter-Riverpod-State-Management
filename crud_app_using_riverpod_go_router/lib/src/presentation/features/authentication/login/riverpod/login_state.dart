@@ -2,8 +2,6 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 import '../../../../core/base/status.dart';
 
-export 'package:crud_app_using_riverpod_go_router/src/presentation/core/base/status.dart';
-
 part 'login_state.mapper.dart';
 
 @MappableClass(
