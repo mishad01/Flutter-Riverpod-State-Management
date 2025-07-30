@@ -2,13 +2,14 @@ import 'package:dart_mappable/dart_mappable.dart';
 
 import '../../../../core/base/status.dart';
 
+export 'package:flutter_template/src/presentation/core/base/status.dart';
+
 part 'login_state.mapper.dart';
 
 @MappableClass(
   generateMethods: GenerateMethods.copy | GenerateMethods.stringify,
 )
 class LoginState<T> with LoginStateMappable<T> {
-  //dart_mappable connect this to a mapper and enable copyWith, toString, etc.
   const LoginState({
     this.rememberMe = false,
     this.type = Status.initial,
@@ -17,8 +18,7 @@ class LoginState<T> with LoginStateMappable<T> {
 
   final bool rememberMe;
   final Status type;
-  final String?
-  error; //So here these parameters are getting used in the state.mapper
+  final String? error;
 
   bool get isInitial => type.isInitial;
 

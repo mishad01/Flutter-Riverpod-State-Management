@@ -9,7 +9,9 @@ part of 'rest_client.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
 class _RestClient implements RestClient {
-  _RestClient(this._dio, {this.baseUrl, this.errorLogger});
+  _RestClient(this._dio, {this.baseUrl, this.errorLogger}) {
+    baseUrl ??= 'http://103.197.207.34:3039/api';
+  }
 
   final Dio _dio;
 
@@ -28,7 +30,7 @@ class _RestClient implements RestClient {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            null,
+            '/auth/crm-user/login',
             queryParameters: queryParameters,
             data: _data,
           )

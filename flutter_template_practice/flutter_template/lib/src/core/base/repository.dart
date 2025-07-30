@@ -1,7 +1,32 @@
+import '../../data/services/network/interceptor/failures.dart' as deprecated;
+import '../logger/log.dart';
 import 'failure.dart';
+import 'response_modal.dart';
 import 'result.dart';
 
 abstract base class Repository<T> {
+  Future<T> request(
+    Future<dynamic> Function() request, {
+    Function(String?, {String? code}) onError = _defaultErrorHandler,
+  }) async {
+    try {
+      return await request();
+    } on deprecated.Failure catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      ErrorModel? error = ErrorModel.fromJson(e.error);
+      return onError.call(error.message, code: error.code);
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      return onError.call('Something went wrong!');
+    }
+  }
+
+  static Future _defaultErrorHandler(String? message, {String? code}) {
+    return Future.error(message as Object);
+  }
+
   /// Executes an asynchronous operation and wraps the result in a [Result]
   /// type.
   ///
@@ -28,12 +53,6 @@ abstract base class Repository<T> {
   /// );
   /// ```
   // ignore: avoid_shadowing_type_parameters
-
-  /*
-  This is a wrapper function. It accepts any asynchronous function (Future<T>) and runs it inside a try-catch.
-  ✅ If it succeeds, it wraps the result in Success(result)
-  ❌ If it fails, it catches the exception and wraps it in Error(Failure) using a custom error mapper.
-  */
   Future<Result<T, Failure>> asyncGuard<T>(
     Future<T> Function() operation,
   ) async {

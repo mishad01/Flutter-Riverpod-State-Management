@@ -29,21 +29,18 @@ class LoginResponseModel extends LoginResponseEntity
   final String refreshToken;
 }
 
-/*
-We do this to separate layers of responsibility in clean architecture.
-
-You have:
-1. Entity ➜ used in business logic (clean, reusable, testable).
-2. Model ➜ used in data/network layer (handles JSON, APIs, serialization).
-So, .fromEntity() is the bridge from logic to API.
-*/
-
 @MappableClass(generateMethods: GenerateMethods.copy | GenerateMethods.encode)
 class LoginRequestModel extends LoginRequestEntity
     with LoginRequestModelMappable {
-  LoginRequestModel({required super.email, required super.password});
+  LoginRequestModel({
+    required super.username,
+    required super.password,
+  });
 
   factory LoginRequestModel.fromEntity(LoginRequestEntity entity) {
-    return LoginRequestModel(email: entity.email, password: entity.password);
+    return LoginRequestModel(
+      username: entity.username,
+      password: entity.password,
+    );
   }
 }

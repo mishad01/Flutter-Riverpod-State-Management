@@ -116,7 +116,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       ),
                     ),
                     const SizedBox(height: 10),
-
                     FilledButton(
                       onPressed: loginState.isLoading ? null : _onLogin,
                       style: ElevatedButton.styleFrom(
