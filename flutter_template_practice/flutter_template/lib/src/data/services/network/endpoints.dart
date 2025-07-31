@@ -1,5 +1,5 @@
 class Endpoints {
-  static const String base = 'https://crud.teamrabbil.com/api/v1';
+  static const base = 'https://crud.teamrabbil.com/api/v1';
 
   /// Product Endpoints
   static const String getProduct = '/ReadProduct';

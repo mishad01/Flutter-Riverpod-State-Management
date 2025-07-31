@@ -16,4 +16,7 @@ abstract class RestClient {
 
   @POST(Endpoints.base)
   Future<HttpResponse> login(@Body() LoginRequestModel request);
+
+  @GET(Endpoints.getProduct)
+  Future<HttpResponse> fetchProducts();
 }

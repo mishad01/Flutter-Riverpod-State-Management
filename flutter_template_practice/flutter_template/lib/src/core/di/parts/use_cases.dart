@@ -19,3 +19,8 @@ SaveRememberMeUseCase saveRememberMeUseCase(Ref ref) {
 LogoutUseCase logoutUseCase(Ref ref) {
   return LogoutUseCase(ref.read(authenticationRepositoryProvider));
 }
+
+@riverpod
+FetchProductUseCase fetchProductUseCase(Ref ref) {
+  return FetchProductUseCase(ref.read(productRepositoryProvider));
+}

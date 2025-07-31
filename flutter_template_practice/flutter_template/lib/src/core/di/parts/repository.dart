@@ -18,3 +18,10 @@ RouterRepository routerRepository(
     cacheService: ref.read(cacheServiceProvider),
   );
 }
+
+@riverpod
+ProductRepository productRepository(Ref ref) {
+  return ProductRepositoryImpl(
+    ref.read(restClientServiceProvider),
+  );
+}
