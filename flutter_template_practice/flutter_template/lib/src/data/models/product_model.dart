@@ -3,16 +3,20 @@ import 'package:flutter_template/src/domain/entities/product_entity.dart';
 
 part 'product_model.mapper.dart';
 
-@MappableClass(generateMethods: GenerateMethods.decode)
+@MappableClass(
+  generateMethods: GenerateMethods.decode,
+  caseStyle: CaseStyle.pascalCase,
+)
 class ProductResponseModel extends ProductEntity
     with ProductResponseModelMappable {
   ProductResponseModel({
-    @MappableField(key: '_id') required super.id,
-    super.name,
-    super.code,
-    super.imageUrl,
+    @MappableField(key: '_id') required super.sId,
+    //@MappableField(key: 'ProductName') required super.productName,
+    super.productName,
+    super.productCode,
+    super.img,
     super.unitPrice,
-    super.quantity,
+    super.qty,
     super.totalPrice,
     super.createdDate,
   }) : super();

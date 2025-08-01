@@ -9,11 +9,14 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../data/repositories/add_product_repository_impl.dart';
 import '../../data/repositories/authentication_repository_impl.dart';
 import '../../data/services/cache/cache_service.dart';
 import '../../data/services/network/interceptor/token_manager.dart';
 import '../../data/services/network/rest_client.dart';
+import '../../domain/repositories/add_repository.dart';
 import '../../domain/repositories/router_repository.dart';
+import '../../domain/use_cases/add_product_use_case.dart';
 import '../../domain/use_cases/product_use_case.dart';
 
 part 'dependency_injection.g.dart';

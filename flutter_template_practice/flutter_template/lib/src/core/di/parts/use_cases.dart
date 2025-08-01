@@ -24,3 +24,8 @@ LogoutUseCase logoutUseCase(Ref ref) {
 FetchProductUseCase fetchProductUseCase(Ref ref) {
   return FetchProductUseCase(ref.read(productRepositoryProvider));
 }
+
+@riverpod
+AddProductUseCase addProductUseCase(Ref ref) {
+  return AddProductUseCase(ref.read(addProductRepositoryProvider));
+}

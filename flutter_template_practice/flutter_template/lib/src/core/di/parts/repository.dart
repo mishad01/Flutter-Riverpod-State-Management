@@ -25,3 +25,10 @@ ProductRepository productRepository(Ref ref) {
     ref.read(restClientServiceProvider),
   );
 }
+
+@Riverpod(keepAlive: true)
+AddProductRepository addProductRepository(Ref ref) {
+  return AddProductRepositoryImpl(
+    remote: ref.read(restClientServiceProvider),
+  );
+}

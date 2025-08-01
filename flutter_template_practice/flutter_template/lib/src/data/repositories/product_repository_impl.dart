@@ -23,6 +23,12 @@ final class ProductRepositoryImpl extends ProductRepository {
           log(rawList.toString(), name: 'ProductRepositoryImpl');
           _allProduct.addAll(
             rawList.map((e) => ProductResponseModel.fromJson(e)).toList(),
+            //rawList.map((e) => ProductResponseModelMapper.fromJson(e)).toList(),
+            /*
+            - Cleaner: It's easier to read and immediately tells other developers what model you're working with.
+            - More maintainable: If you ever decide to change the internal logic of fromJson, you only update it in one place (inside the factory constructor), not everywhere else in the codebase.
+            - More idiomatic Dart: It's a Dart convention to use Model.fromJson() when deserializing JSON.
+            */
           );
           log(allProduct.toString(), name: 'dataimp');
         }

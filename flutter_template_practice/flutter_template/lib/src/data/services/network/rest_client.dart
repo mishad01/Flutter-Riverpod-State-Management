@@ -19,4 +19,9 @@ abstract class RestClient {
 
   @GET(Endpoints.getProduct)
   Future<HttpResponse> fetchProducts();
+
+  @POST(Endpoints.createProduct)
+  Future<HttpResponse> addProduct({
+    @Body() required Map<String, dynamic> body,
+  });
 }

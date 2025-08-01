@@ -1,20 +1,20 @@
 class ProductEntity {
-  final String id;
-  final String? name;
-  final String? code;
-  final String? imageUrl;
-  final dynamic unitPrice;
-  final dynamic quantity;
-  final dynamic totalPrice;
-  final DateTime? createdDate;
+  String? sId;
+  String? productName;
+  String? productCode;
+  String? img;
+  String? unitPrice;
+  String? qty;
+  String? totalPrice;
+  String? createdDate;
 
   ProductEntity({
-    required this.id,
-    this.name,
-    this.code,
-    this.imageUrl,
+    required this.sId,
+    this.productName,
+    this.productCode,
+    this.img,
     this.unitPrice,
-    this.quantity,
+    this.qty,
     this.totalPrice,
     this.createdDate,
   });
